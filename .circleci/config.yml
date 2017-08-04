@@ -10,7 +10,6 @@ jobs:
           name: Install wgets
           command: apt-get install wget -y
       - run: wget https://phar.phpunit.de/phpunit.phar
-      - run: mv phpunit.phar phpunit
       - run:
           name: Run tests
           command: phpunit sampleTest
