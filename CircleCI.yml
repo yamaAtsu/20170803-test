@@ -1,4 +1,3 @@
-// Hello Worldをechoするだけのテスト
 test:
-	override:
-		- echo Hello World
+  override:
+    - phpunit SampleTest
