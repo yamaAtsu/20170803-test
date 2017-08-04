@@ -5,17 +5,17 @@ jobs:
       - image: php
     steps:
       - checkout
+  test1:
+    docker:
+      - image: php
+    steps:
+      - checkout
       - run: apt-get update && apt-get install -y libgmp3-dev
       - run: apt-get install php-pear -y
       - run: pear channel-update pear.php.net
       - run: pear upgrade pear
       - run: pear config-set auto_discover 1
       - run: apt-get install phpunit -y
-  test1:
-    docker:
-      - image: php
-    steps:
-      - checkout
       - run: phpunit sampleTest
 workflows:
   version: 2
