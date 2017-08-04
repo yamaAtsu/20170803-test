@@ -1,0 +1,9 @@
+machine:
+  php:
+    version: 7.0.10
+dependencies:
+  cache_directories:
+    - "~/.cache/pip"
+test:
+  override:
+    - phpunit SampleTest
