@@ -11,7 +11,8 @@ jobs:
       - run: pear upgrade pear
       - run: pear config-set auto_discover 1
       - run: apt-get install phpunit -y
-      
-      - run:
-          name: Run tests
-          command: phpunit sampleTest
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - phpunit sampleTest
