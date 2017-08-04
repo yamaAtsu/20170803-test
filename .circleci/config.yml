@@ -11,8 +11,14 @@ jobs:
       - run: pear upgrade pear
       - run: pear config-set auto_discover 1
       - run: apt-get install phpunit -y
+  test1:
+    docker:
+      - image: php
+    steps:
+      - checkout
+      - run: phpunit sampleTest
 workflows:
   version: 2
   build_and_test:
     jobs:
-      - phpunit sampleTest
+      - test1
