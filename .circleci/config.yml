@@ -6,10 +6,11 @@ jobs:
     steps:
       - checkout
       - run: apt-get update && apt-get install -y libgmp3-dev
-      - run:
-          name: Install wgets
-          command: apt-get install wget -y
-      - run: wget https://phar.phpunit.de/phpunit.phar
+      - run: apt-get install php-pear
+      - run: pear channel-update pear.php.net
+      - run: pear upgrade pear
+      - run: pear config-set auto_discover 1
+      - run: pear install pear.phpunit.de/PHPUnit-3.7.32
       - run:
           name: Run tests
           command: phpunit sampleTest
