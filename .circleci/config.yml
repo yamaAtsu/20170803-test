@@ -11,8 +11,8 @@ jobs:
           command: apt-get install wget -y
       - run: wget https://phar.phpunit.de/phpunit.phar && mv phpunit.phar phpunit
       - run:
-          name: Install dependencies
-          command: pip install -r requirements.txt
+          name: Install pip
+          command: apt-get install pip -y
       - run:
           name: Run tests
           command: phpunit sampleTest
