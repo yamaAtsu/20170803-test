@@ -1,9 +1,19 @@
-machine:
-  php:
-    version: 7.0.10
-dependencies:
-  cache_directories:
-    - "~/.cache/pip"
-test:
-  override:
-    - phpunit SampleTest
+version: 2
+jobs:
+  build:
+    docker:
+      - image: php
+    steps:
+      - checkout
+      - run: apt-get update && apt-get install -y libgmp3-dev
+      - run:
+          name: Install phpunit
+          command: |
+          	wget https://phar.phpunit.de/phpunit.phar
+          	mv phpunit.phar phpunit
+      - run:
+          name: Install dependencies
+          command: pip install -r requirements.txt
+      - run:
+          name: Run tests
+          command: phpunit sampleTest
